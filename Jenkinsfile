@@ -26,7 +26,7 @@ pipeline {
         
         stage('Unit Testing') {
                 steps {
-                    sh './manage.py test blog'
+                    sh 'python3 manage.py test blog'
                 }
         }
 
