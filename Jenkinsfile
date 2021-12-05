@@ -1,17 +1,10 @@
 pipeline {
     agent any
-
-   
     stages {
 
-            stage('Init') {
+        stage('Init') {
             steps {
                 deleteDir()
-
-                script {
-                     sh 'pip install -r requirements.txt'
-             
-                }
             }
         }
         stage('Test') {
@@ -34,3 +27,4 @@ pipeline {
             deleteDir()
         }
     }
+}
