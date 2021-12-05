@@ -7,15 +7,25 @@ pipeline {
                 deleteDir()
             }
         }
-        stage('Test') {
+        stage('Checkout project') {
             steps {
-                sh 'python app/manage.py test'
+                script {
+                    git branch: "master",
+                        url: 'https://github.com/praveena15-72/django-blog.git'
+                }
             }
-        } 
+        }
+        stage('Installing packages') {
+            steps {
+                script {
+                    sh 'pip install -r requirements.txt'
+                }
+            }
+        }
         
-        stage('Deploy') {
+        stage('Unit Testing') {
                 steps {
-                    sh 'echo not yet...'
+                    sh './manage.py test blog'
                 }
         }
 
