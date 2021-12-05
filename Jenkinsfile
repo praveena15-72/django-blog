@@ -33,7 +33,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t django:latest .' 
-                  sh 'docker tag django praveena/django:latest'
+                sh 'docker tag django praveena/django:latest'
            
                
           }
@@ -43,7 +43,7 @@ pipeline {
             steps {
         withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
           sh  'docker push praveena/django:latest'
-          sh  'docker push praveena/django:$BUILD_NUMBER' 
+         
         }
                   
           }
