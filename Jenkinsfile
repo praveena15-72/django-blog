@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+       agent {
+          docker {
+               image 'qnib/pytest'
+          }
+     }
+
     stages {
 
         stage('Init') {
